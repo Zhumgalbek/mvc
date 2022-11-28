@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+  <style>table,
+  td {
+    border: 1px solid #333333FF;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+  }
+  tfoot {
+    background-color: #333333FF;
+    color: #FFFFFFFF;
+  }
+  </style>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+
+
+
+
+<table class="styled-table">
+  <thead>
+  <tr>
+    <th scope="colgroup">Id</th>
+    <th scope="col">Company name</th>
+    <th scope="col">Located country</th>
+    <th scope="col">Students</th>
+    <th scope="col">Courses</th>
+    <th scope="col">Update</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="company: ${companies}" class="active-row">
+    <td th:text="${company.id}"></td>
+    <td th:text="${company.companyName}"></td>
+    <td th:text="${company.locatedCountry}"></td>
+    <td th:text="${company.count}"></td>
+
+
+    <td><a th:href="@{/courses/{id}(id=${company.getId()})}">
+      <button>Courses</button>
+    </a>
+    </td>
+
+    <td><a th:href="@{/updateCompany(companyId=${company.id})}">
+      <button>Update</button>
+    </a>
+    </td>
+
+    <td> <a th:href="@{/deleteCompany/(companyId=${company.id})}">
+      <button>Delete</button>
+    </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br><br><br><br>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add company"
+       onclick="window.location.href = 'addCompany'">
+
+<!--<video autoplay muted loop id="myVideo">-->
+<!--  <source src="video.mp4" type="video/mp4">-->
+<!--</video>-->
+</body>
+</html>

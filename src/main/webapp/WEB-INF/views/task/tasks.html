@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333333FF;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+    tfoot {
+        background-color: #333333FF;
+        color: #FFFFFFFF;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th scope="colgroup">Id</th>
+        <th scope="col">Task name</th>
+        <th scope="col">Task text</th>
+        <th scope="col">deadline</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task: ${tasks}" class="table">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.taskName}"></td>
+        <td th:text="${task.taskText}"></td>
+
+        <td th:text="${task.deadLine}"></td>
+
+        <td><a th:href="@{/updateTask/{id}(id=${task.id})}">
+            <button>Update</button>
+        </a>
+        </td>
+
+        <td><a th:href="@{/{lessonId}/{id}/deleteTask(lessonId=${lessonId}, id=${task.id})}">
+            <button>Delete</button>
+        </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<br><br><br><br>
+<div style="text-align: center">
+    <a th:href="@{/tasks/{id}/addTask(id=${lessonId})}">
+        <button class="btn"> Add task </button>
+    </a>
+    <br><br><br><br>
+    <a th:href="@{/lessons/{id}(id=${lessonId})}">
+        <button style="margin-left: 10px"  class="btn"> Lesson page </button>
+    </a>
+</div>
+
+</body>
+</html>

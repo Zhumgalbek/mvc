@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/{id}/saveCourse(id=${companyId})}"
+      th:object="${course}"
+      method="post">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>Course Name</b></label>
+        <input type="text" placeholder="Enter company name" th:field="*{courseName}" name="email" id="email" required>
+        <label for="psw"><b>Description</b></label>
+        <input type="text" placeholder="Enter description" th:field="*{description}" name="psw" id="psw" required>
+        <label for="psw"><b>Duration</b></label>
+        <input type="number" placeholder="Enter duration" th:field="*{duration}" name="psw" id="psw1" required>
+        <hr>
+        <button type="submit" class="registerbtn">Save course</button>
+    </div>
+</form>
+
+</body>
+</html>

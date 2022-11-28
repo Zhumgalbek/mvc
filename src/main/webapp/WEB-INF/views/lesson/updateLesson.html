@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/{courseId}/{id}/saveUpdateLesson(courseId=${courseId}, id=${lesson.id})}"
+      th:object="${lesson}"
+      method="POST">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>Lesson Name</b></label>
+        <input type="text" placeholder="Enter group name" th:field="*{lessonName}" name="email" id="email" required>
+        <hr>
+        <button type="submit" class="registerbtn">Update lesson</button>
+    </div>
+</form>
+
+</body>
+</html>

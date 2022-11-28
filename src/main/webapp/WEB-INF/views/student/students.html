@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333333FF;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+    tfoot {
+        background-color: #333333FF;
+        color: #FFFFFFFF;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th scope="colgroup">Id</th>
+        <th scope="col">Student name</th>
+        <th scope="col">lastName</th>
+        <th scope="col">email</th>
+        <th scope="col">phoneNumber</th>
+        <th scope="col">studyFormat</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student: ${students}" class="table">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.phoneNumber}"></td>
+        <td th:text="${student.studyFormat}"></td>
+
+        <td><a th:href="@{/updateStudent/{id}(id=${student.id})}">
+            <button>Update</button>
+        </a>
+        </td>
+
+        <td><a th:href="@{/{groupId}/{id}/deleteStudent(groupId=${groupId}, id=${student.id})}">
+            <button>Delete</button>
+        </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br><br>
+<div style="text-align: center">
+    <a th:href="@{/{groupId}/addStudent(groupId=${groupId})}">
+        <button class="btn"> Add student </button>
+    </a>
+    <br><br><br><br>
+    <a th:href="@{/courses/{id}(id=${companyId})}">
+        <button style="margin-left: 10px"  class="btn"> Courses page </button>
+    </a>
+</div>
+
+</body>
+</html>

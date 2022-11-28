@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/{id}/saveInstructors(id=${courseId})}"
+      th:object="${instructor}"
+      method="post">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+
+        <label for="psw4"><b>Instructor name</b></label>
+        <input type="text" placeholder="Enter instructor name" th:field="*{firstName}" name="email1" id="psw4" required>
+
+        <label for="psw"><b>Instructor last name</b></label>
+        <input type="text" placeholder="Enter instructor last name" th:field="*{lastName}" name="psw" id="psw" required>
+
+        <label for="email"><b>Instructor email</b></label>
+        <input type="email" placeholder="Enter email" th:field="*{email}" name="email" id="email" required>
+
+        <label for="psw2"><b>Instructor phone number</b></label>
+        <input type="text" placeholder="+996 XXX XXX XXX" th:field="*{phoneNumber}" name="psw2" id="psw2" required>
+
+        <label for="psw3"><b>Instructor specialization</b></label>
+        <input type="text"  placeholder="Enter specialization" th:field="*{specialization}" name="psw2" id="psw3" required>
+        <hr>
+        <button type="submit" class="registerbtn">Save instructor</button>
+    </div>
+</form>
+
+</body>
+</html>

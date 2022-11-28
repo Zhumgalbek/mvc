@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333333FF;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+    tfoot {
+        background-color: #333333FF;
+        color: #FFFFFFFF;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th scope="colgroup">Id</th>
+        <th scope="col">Group name</th>
+        <th scope="col">Date of start</th>
+        <th scope="col">Image</th>
+        <th scope="col">Course</th>
+        <th scope="col">Student</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group: ${groupCourses}" class="table">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td><img th:src="${group.image}"/></td>
+        <td th:text="${group.count}"></td>
+
+        <td><a th:href="@{/students/{id}(id=${group.getId()})}">
+            <button>Ass Student</button>
+        </a>
+        </td>
+
+        <td><a th:href="@{/updateGroupByCourseId/{courseId}/{id}(id=${group.id}, courseId=${courseId})}">
+            <button>Update</button>
+        </a>
+        </td>
+        <td><a th:href="@{/{courseId}/{id}/deleteGroupByCourseId(id=${group.id},courseId=${courseId})}">
+            <button>Delete</button>
+        </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br><br>
+<div style="text-align: center">
+    <a th:href="@{/groups/{companyId}/{id}/addGroupByCourseId(id=${courseId}, companyId=${companyId})}">
+        <button class="btn"> Add Group </button>
+    </a>
+    <br><br><br><br>
+    <a th:href="@{/courses/{id}(id=${companyId})}">
+        <button style="margin-left: 10px"  class="btn"> Courses page </button>
+    </a>
+</div>
+
+</body>
+</html>

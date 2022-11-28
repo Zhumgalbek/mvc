@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form  action="#"
+       th:action="@{/{groupId}/{id}/saveUpdateStudent(groupId=${groupId}, id=${student.id})}"
+       th:object="${student}"
+       method="POST">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>First Name</b></label>
+        <input type="text" placeholder="Enter first name" th:field="*{firstName}" name="email" id="email" required>
+        <label for="email"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter last name" th:field="*{lastName}" name="email" id="email1" required>
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter email" th:field="*{email}" name="email" id="email2" required>
+        <label for="email"><b>Phone number</b></label>
+        <input type="text" placeholder="Enter phone number" th:field="*{phoneNumber}" name="email" id="email3" required>
+        <label><b>Study format</b></label>
+        <br>
+        <label>
+            <select th:field="*{studyFormat}">
+                <option th:value="${studyFormatOnline}">online</option>
+                <option th:value="${studyFormatOffline}">offline</option>
+            </select>
+        </label>
+
+
+
+        <hr>
+        <button type="submit" class="registerbtn">Save student</button>
+    </div>
+</form>
+
+</body>
+</html>

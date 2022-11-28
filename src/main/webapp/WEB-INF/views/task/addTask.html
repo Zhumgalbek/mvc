@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/{id}/saveTask(id=${lessonId})}"
+      th:object="${task}"
+      method="POST">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>Task Name</b></label>
+        <input type="text" placeholder="Enter task name" th:field="*{taskName}" name="email" id="email" required>
+        <label for="email"><b>Task text</b></label>
+        <input type="text" placeholder="Enter task text" th:field="*{taskText}" name="email" id="email1" required>
+        <label for="email"><b>Task deadline</b></label>
+        <input type="date" placeholder="Choose task deadline" th:field="*{deadLine}" name="email" id="email2" required>
+        <hr>
+        <button type="submit" class="registerbtn">Save task</button>
+    </div>
+</form>
+
+</body>
+</html>

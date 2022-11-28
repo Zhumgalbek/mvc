@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<form th:action="@{/{courseId}/{id}/saveUpdateGroupByCourseId(id=${group.id}, courseId=${courseId})}"
+      th:object="${group}"
+      method="post">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>Group Name</b></label>
+        <input type="text" placeholder="Enter company name" th:field="*{groupName}" name="email" id="email" required>
+        <label for="psw"><b>Date of start</b></label>
+        <input type="date" placeholder="Enter date of start" th:field="*{dateOfStart}" name="psw" id="psw" required>
+        <label for="email"><b>Image</b></label>
+        <input type="text" placeholder="Enter image" th:field="*{image}" name="email" id="email1" required>
+        <hr>
+        <button type="submit" class="registerbtn">Update group</button>
+    </div>
+</form>
+
+</body>
+</html>
